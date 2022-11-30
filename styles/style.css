@@ -1,0 +1,7 @@
+body{
+    font-family: sans-serif;
+}
+.done{
+    color: red;
+    text-decoration: line-through;
+}
