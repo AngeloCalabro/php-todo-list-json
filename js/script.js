@@ -11,8 +11,7 @@ const app = createApp({
     },
     methods: {
         getTodo() {
-            axios.get(this.apiUrl).then(
-                (response) => {
+            axios.get(this.apiUrl).then((response) => {
                     // console.log(response.data);
                     this.todoList = response.data;
                 })
@@ -25,8 +24,7 @@ const app = createApp({
                 this.apiUrl, 
                 data,
                 {headers: {'Content-Type': 'multipart/form-data'}}
-            ).then(
-                (response) => {
+            ).then((response) => {
                     // console.log(this.newTodoText);
                     console.log(response.data);
 
@@ -36,31 +34,33 @@ const app = createApp({
                 })
         },
         toggleTodo(index){
+            // Controllare che i dati arrivino
             console.log(index);
+
             const todoFormData = {
-                toggleTodoIndex: this.index,
+                toggleTodoIndex: index,
             }
             axios.post(
                 this.apiUrl,
                 todoFormData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
-            ).then(
-                (response) => {
+            ).then((response) => {
                     // console.log(response.data);
                     this.getTodo();
                 })
         },
         deleteTodo(index) {
+            // Controllare che i dati arrivino
             console.log(index);
+
             const todoData = {
-                deleteTodoIndex: this.index,
+                deleteTodoIndex: index,
             }
             axios.post(
                 this.apiUrl,
                 todoData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
-            ).then(
-                (response) => {
+            ).then((response) => {
                     // console.log(response.data);
                     this.getTodo();
                 })
