@@ -25,9 +25,9 @@
                     <input type="text" placeholder="Inserire cose da fare" v-model="newTodoText">
                     <button @click="addTodo">Inserisci</button>
                 </div>
-                <div>
+                <div class="bg-white">
                     <ul id="todo-list">
-                        <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" class="list-unstyled bg-white p-1">{{todo.text}}</li>
+                        <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" :key="index" class="p-1" @click="toggleTodo(index)">{{todo.text}}<span @click.stop="deleteTodo(index)" class="delete"><i class="fa-solid fa-trash p-1"></i></span></li>
                     </ul>
                 </div>
             </div>

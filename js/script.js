@@ -27,12 +27,41 @@ const app = createApp({
                 {headers: {'Content-Type': 'multipart/form-data'}}
             ).then(
                 (response) => {
-                    console.log(this.newTodoText);
-                    console.log(response.data.text);
+                    // console.log(this.newTodoText);
+                    console.log(response.data);
 
-                    this.newTodoText = data.newTodoText;
-                    
                     this.newTodoText = '';
+                    this.getTodo();
+
+                })
+        },
+        toggleTodo(index){
+            console.log(index);
+            const todoFormData = {
+                toggleTodoIndex: this.index,
+            }
+            axios.post(
+                this.apiUrl,
+                todoFormData,
+                { headers: { 'Content-Type': 'multipart/form-data' } }
+            ).then(
+                (response) => {
+                    // console.log(response.data);
+                    this.getTodo();
+                })
+        },
+        deleteTodo(index) {
+            console.log(index);
+            const todoData = {
+                deleteTodoIndex: this.index,
+            }
+            axios.post(
+                this.apiUrl,
+                todoData,
+                { headers: { 'Content-Type': 'multipart/form-data' } }
+            ).then(
+                (response) => {
+                    // console.log(response.data);
                     this.getTodo();
                 })
         }

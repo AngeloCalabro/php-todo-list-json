@@ -5,3 +5,8 @@ body{
     color: red;
     text-decoration: line-through;
 }
+.delete{
+    background-color: red;
+    color: white;
+    float: right;
+}
