@@ -20,14 +20,14 @@
     <div id="app">
         <h2 class="text-center">{{title}}</h2>
         <div class="d-flex justify-content-center">
-            <div>
+            <div class="flex-column justify-content-center" >
                 <div>
                     <input type="text" placeholder="Inserire cose da fare" v-model="newTodoText">
                     <button @click="addTodo">Inserisci</button>
                 </div>
                 <div>
                     <ul id="todo-list">
-                        <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" class="list-unstyled bg-white">{{todo.text}}</li>
+                        <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" class="list-unstyled bg-white p-1">{{todo.text}}</li>
                     </ul>
                 </div>
             </div>

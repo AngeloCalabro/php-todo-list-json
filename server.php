@@ -8,6 +8,7 @@ $todo_list = json_decode($file_text);
 
 if(isset($_POST['newTodoText'])){
     // echo "il parametro post è arrivato";
+    
     //prendere il valore inviatoci
     //inserirlo nell'array
     //salvarlo nel file

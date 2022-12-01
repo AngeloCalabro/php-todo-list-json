@@ -24,10 +24,13 @@ const app = createApp({
             axios.post(
                 this.apiUrl, 
                 data,
-                {'Content-Type': 'multipart/form-data'}
+                {headers: {'Content-Type': 'multipart/form-data'}}
             ).then(
                 (response) => {
-                    // console.log(response.data);
+                    console.log(this.newTodoText);
+                    console.log(response.data.text);
+
+                    this.newTodoText = data.newTodoText;
                     
                     this.newTodoText = '';
                     this.getTodo();
