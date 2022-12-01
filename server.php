@@ -25,19 +25,21 @@ if(isset($_POST['newTodoText'])){
 } else if(isset($_POST['toggleTodoIndex'])) {
     // togglo un todo
     $todoIndex = $_POST['toggleTodoIndex'];
-    echo $todo_list[$todoIndex]->text;
-    // echo $todo_list[$todoIndex]->done;
-    // if($todo_list[$todoIndex] -> done == 1 ){
-    //     // if done
-    //     // echo "fatto";
-    //     $todo_list[$todoIndex] -> done == false;
-    // } else {
-    //     // if not done
-    //     // echo "da fare";
-    //     $todo_list[$todoIndex] -> done == true;
-    // }
+    // echo $todo_list[$todoIndex]->text;
+    // echo $todo_list[$todoIndex];
+    print_r($todo_list[$todoIndex]->done);
 
-    // file_put_contents($file_url, json_encode($todo_list));
+    if($todo_list[$todoIndex]->done==1 ){
+        // if done
+        // echo "fatto";
+        $todo_list[$todoIndex]->done='';
+    } else {
+        // if not done
+        // echo "da fare";
+        $todo_list[$todoIndex]->done=1;
+    }
+
+    file_put_contents($file_url, json_encode($todo_list));
  
 } else if(isset($_POST['deleteTodoIndex'])) {
     $todoIndex = $_POST['deleteTodoIndex']; 
