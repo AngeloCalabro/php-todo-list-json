@@ -18,19 +18,27 @@
 
 <body class="bg-primary">
     <div id="app">
-        <h2 class="text-center">{{title}}</h2>
-        <div class="d-flex justify-content-center">
-            <div class="flex-column justify-content-center" >
-                <div>
-                    <input type="text" placeholder="Inserire cose da fare" v-model="newTodoText">
-                    <button @click="addTodo">Inserisci</button>
+        <div class="container">
+            <div class="row g-0">
+                <h1 class="col-12 text-center fw-bold">{{title}}</h1>
+                <div class="col-12">
+                    <div class="p-1 m-auto text-center">
+                        <input type="text" class="m-1 form-control w-50 d-inline-block" placeholder="Inserire cose da fare" v-model="newTodoText">
+                        <button class="m-1 btn btn-success" @click="addTodo">Inserisci</button>
+                    </div>
+                    <div class="my-desk p-1">
+                        <ul class="m-0 px-3">
+                            <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" :key="index" class="p-2 d-flex align-items-center justify-content-between"
+                                @click="toggleTodo(index)">
+                                <span class="fw-semibold">{{todo.text}}</span>
+                                <span @click.stop="deleteTodo(index)" class="delete"><i class="fa-solid fa-trash p-1"></i></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="bg-white">
-                    <ul id="todo-list">
-                        <li v-for="(todo, index) in todoList" :class="todo.done ? 'done' : ''" :key="index" class="p-1" @click="toggleTodo(index)">{{todo.text}}<span @click.stop="deleteTodo(index)" class="delete"><i class="fa-solid fa-trash p-1"></i></span></li>
-                    </ul>
-                </div>
+
             </div>
+            
         </div>
     </div>
     <script src="./js/script.js"></script>
